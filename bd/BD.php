@@ -10,7 +10,7 @@ function conectar(){
         $GLOBALS['pdo']=new PDO("mysql:host=".$GLOBALS['host'].";dbname=".$GLOBALS['bd']."", $GLOBALS['user'], $GLOBALS['password']);
         $GLOBALS['pdo']->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }catch (PDOException $e){
-        print "Error!: No se pudo conectar a la bd ".$bd."<br/>";
+        print "Error!: No se pudo conectar a la bd ".$GLOBALS['bd']."<br/>";
         print "\nError!: ".$e."<br/>";
         die();
     }
@@ -70,7 +70,7 @@ function metodoDelete($query){
         $sentencia->execute();
         $sentencia->closeCursor();
         desconectar();
-        return $_GET['id'];
+        return $_POST['id'];
     }catch(Exception $e){
         die("Error: ".$e);
     }
